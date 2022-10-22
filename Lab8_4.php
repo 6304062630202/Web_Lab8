@@ -6,6 +6,7 @@
     <input type="text" name="keyword">
     <input type="submit" value="ค้นหา">
 </form>
+
 <?php
     $stmt = $pdo->prepare("SELECT * FROM member WHERE name LIKE ?");
     if (!empty($_GET)) 
@@ -13,11 +14,12 @@
     $stmt->bindParam(1, $value); 
     $stmt->execute(); 
 ?>
-<?php    while ($row = $stmt->fetch()) : ?>
+<?php while ($row = $stmt->fetch()) : ?>
     ชื่อสมาชิก : <?=$row ["name"]?><br>
     ที่อยู่ : <?=$row ["address"]?><br>
     อีเมล์ : <?=$row ["email"]?><br>
-    <img src='img/<?=$row["num"]?>.jpg' width='100'><br><hr>
+    <img src='img/<?=$row["username"]?>.jpg' width='100'><br><hr>
 <?php endwhile; ?>
+
 </body>
 </html>
